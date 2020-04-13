@@ -5,6 +5,7 @@
 * [Technologies](#technologies)
 * [Setup](#setup)
 * [Handling db migrations](#handling-db-migrations)
+* [To do](#to-do)
 
 ## General info
 This project is based on [Building REST APIs with Flask](https://www.amazon.com/Building-REST-APIs-Flask-Services/dp/1484250214) written by Kunal Relan. <br>
@@ -43,3 +44,7 @@ MAIL_PASSWORD = <email_password>
 Every time the database models change run:
 * ```$ flask db migrate```
 * ```$ flask db upgrade```
+
+## To do
+* REST API documentation with ```Swagger```
+* Unit Tests with ```pytest```
