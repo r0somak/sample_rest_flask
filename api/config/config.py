@@ -1,4 +1,4 @@
-from credentials import DB_PASSWORD, DB_USER, FLASK_SECRET_KEY as secret_key, FLASK_SECURITY_PASSWORD_SALT as salt, MAIL_USERNAME as mail_usrname, MAIL_PASSWORD as mail_pswd
+from src.credentials import DB_PASSWORD, DB_USER, FLASK_SECRET_KEY as secret_key, FLASK_SECURITY_PASSWORD_SALT as salt, MAIL_USERNAME as mail_usrname, MAIL_PASSWORD as mail_pswd
 
 
 class Config(object):
