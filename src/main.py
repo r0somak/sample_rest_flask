@@ -4,7 +4,8 @@ from flask import Flask, send_from_directory
 from flask_jwt_extended import JWTManager
 from flask_migrate import Migrate
 from api.utils.database import db
-from api.config.config import ProductionConfig, TestingConfig, DevelopmentConfig
+from api.config.config import ProductionConfig, TestingConfig
+from api.config.config import DevelopmentConfig
 from api.utils.responses import response_with
 import api.utils.responses as resp
 from api.utils.email import mail
@@ -32,6 +33,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 @app.route('/avatar/<filename>')
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+
 
 @app.after_request
 def add_header(response):

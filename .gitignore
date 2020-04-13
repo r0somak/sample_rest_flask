@@ -4,3 +4,4 @@ __pycache__/
 credentials.py
 venv/
 static/images/*
+migrations/
