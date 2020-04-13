@@ -15,7 +15,7 @@ author_routes = Blueprint("author_routes", __name__)
 
 
 def allowed_file(filename):
-    return filetype in allowed_extensions
+    return filename in allowed_extensions
 
 
 @author_routes.route('/', methods=['POST'])

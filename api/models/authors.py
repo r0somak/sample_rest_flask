@@ -15,7 +15,7 @@ class Author(db.Model):
         backref='Author',
         cascade="all, delete-orphan"
     )
-    avatar = db.Column(db.String(20), nullable=True)
+    avatar = db.Column(db.String(120), nullable=True)
 
     def __init__(self, first_name, last_name, books=[]):
         self.first_name = first_name
