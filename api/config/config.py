@@ -14,7 +14,7 @@ class Config(object):
     MAIL_USE_SSL = True
     MAIL_USERNAME = mail_usrname
     MAIL_PASSWORD = mail_pswd
-    UPLOAD_FOLDER = 'static/images'
+    UPLOAD_FOLDER = 'static\images'
 
 
 class ProductionConfig(Config):

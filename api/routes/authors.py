@@ -35,7 +35,7 @@ def create_author():
 @author_routes.route('/', methods=['GET'])
 def get_author_list():
     fetched = Author.query.all()
-    author_schema = AuthorSchema(many=True, only=['first_name', 'last_name', 'id'])
+    author_schema = AuthorSchema(many=True, only=['first_name', 'last_name', 'id', 'avatar'])
     authors = author_schema.dump(fetched)
     return response_with(resp.SUCCESS_200, value={"authors": authors})
 
@@ -78,7 +78,7 @@ def modify_author_detail(id):
     return response_with(resp.SUCCESS_200, value={"author": author})
 
 
-@author_routes.route('/<int:id>', methods=['delete'])
+@author_routes.route('/<int:id>', methods=['DELETE'])
 @jwt_required
 def delete_author(id):
     get_author = Author.query.get_or_404(id)
@@ -88,14 +88,14 @@ def delete_author(id):
 
 
 @author_routes.route('/avatar/<int:author_id>', methods=['POST'])
-@jwt_required
-def upsert_author_avatar(author_id):
+# @jwt_required
+def upload_author_avatar(author_id):
     try:
         file = request.files['avatar']
         get_author = Author.query.get_or_404(author_id)
         if file and allowed_file(file.content_type):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
+            file.save(os.path.join(os.path.join(current_app.root_path, current_app.config['UPLOAD_FOLDER']), filename))
             get_author.avatar = url_for('uploaded_file', filename=filename, _external=True)
             db.session.add(get_author)
             db.session.commit()

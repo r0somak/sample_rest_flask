@@ -48,6 +48,7 @@ SUCCESS_204 = {
     'code': 'success'
 }
 
+
 def response_with(response, value=None, message=None, error=None, headers={}, pagination=None):
     result = {}
     if value is not None:

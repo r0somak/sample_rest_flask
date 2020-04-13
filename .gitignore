@@ -3,5 +3,5 @@
 __pycache__/
 credentials.py
 venv/
-static/images/*
+src/static/images/*
 migrations/

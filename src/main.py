@@ -1,6 +1,7 @@
 import logging
 import os
-from flask import Flask, send_from_directory
+from flask import Flask, current_app
+from flask import send_from_directory
 from flask_jwt_extended import JWTManager
 from flask_migrate import Migrate
 from api.utils.database import db
@@ -30,9 +31,18 @@ app.register_blueprint(book_routes, url_prefix='/api/books')
 app.register_blueprint(user_routes, url_prefix='/api/users')
 
 
-@app.route('/avatar/<filename>')
+@app.route('/', methods=['GET'])
+def index():
+    return response_with(resp.SUCCESS_200, value={"test": "ok"})
+
+
+@app.route('/avatar/<path:filename>', methods=['GET'])
 def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+    print(f"filename {filename}")
+    uploads = os.path.join(current_app.root_path, app.config['UPLOAD_FOLDER'])
+    print(f"UPLOADS {uploads}")
+    return send_from_directory(directory=uploads, filename=filename)
+    # return response_with(resp.SUCCESS_200, value=send_from_directory(app.config['UPLOAD_FOLDER'], filename, _external=True))
 
 
 @app.after_request
