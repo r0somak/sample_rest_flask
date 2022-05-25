@@ -30,7 +30,7 @@ pbr==5.4.5
 pycodestyle==2.5.0
 pyflakes==2.1.1
 Pygments==2.6.1
-PyJWT==1.7.1
+PyJWT==2.4.0
 PyMySQL==0.9.3
 python-dateutil==2.8.1
 python-editor==1.0.4
